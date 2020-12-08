@@ -1,0 +1,10 @@
+sudo: required
+language: generic
+services:
+  - docker
+
+before_install:
+  - docker build -t TRAVIS -f Dockerfile.dev .
+
+script:
+  - docker run -e CI=true TRAVIS npm run test
